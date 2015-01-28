@@ -1,4 +1,4 @@
-var app = angular.module('directiveWorkshop', []);
+var app = angular.module('directiveWorkshop', ['myDirectives', 'notifyDirective']);
 
 app.controller('mainCtrl', function($scope, mainService){
 $scope.getData = function () {
@@ -7,5 +7,4 @@ $scope.getData = function () {
            return $scope.data = data;
         });
     };
-
 });

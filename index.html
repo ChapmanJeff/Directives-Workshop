@@ -9,7 +9,8 @@
 <h2>pending</h2>
 	<form>
 		<input ng-model="query" placeholder="Search"/>
-		<button ng-click="getData()">Submit</button> 
+		<!-- <button ng-show="spinner" pending request="getData()">Submit</button>  -->
+		<pending request="getData()"></pending>
 	</form>
 </div>
 
@@ -19,9 +20,11 @@
 		<input ng-model="title" placeholder="title"/>
 		<input ng-model="body" placeholder="body"/>
 		<input ng-model="icon" placeholder="iconUrl"/>
-		<button ng-click="">Submit</button> 
+		<button notify title="title" body="body" icon="icon" >Submit</button> 
 	</form>
 </div>
+
+{{data}}
 
 <scripts>
 	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
@@ -29,6 +32,7 @@
 	<script type="text/javascript" src="mainCtrl.js"></script>
 	<script type="text/javascript" src="mainService.js"></script>
 	<script type="text/javascript" src="myDirectives.js"></script>
+	<script type="text/javascript" src="notifyDirective.js"></script>
 </scripts>
 
 </body>
