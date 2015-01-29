@@ -17,8 +17,10 @@ app.directive('notify', function() {
       });
 
       elem.click(function () {
+      	console.log(scope.title)
 				var notification = new Notification(scope.title, {body: scope.body, icon: scope.icon});
-				
+				scope.title = 'test';
+				console.log(scope.title);
       })
 		},
 	}
