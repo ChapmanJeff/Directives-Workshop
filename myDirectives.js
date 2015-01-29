@@ -1,6 +1,6 @@
 var app = angular.module('myDirectives', []);
 
-app.directive('pending', function() {		//make sure you link to index but not html
+app.directive('pending', function($q) {		//make sure you link to index but not html
 	return {
 		restrict: 'AE',
 		scope: {
@@ -19,3 +19,37 @@ app.directive('pending', function() {		//make sure you link to index but not htm
 		}
 	}
 });
+
+/* Other Solution:
+app.directive('pending', function($q) {		//make sure you link to index but not html
+	return {
+		restrict: 'A',
+		scope: {
+			request: '&'
+		},
+		link: function(scope, elem, attrs) {
+			var spinnerIcon = angular.element('<i class="fa fa-spinner'></i>);
+			spinnerIcon.hide()l
+			elem.after(spinnerIcon);
+
+			var invokeRequest = function () {
+				var dfd = $q.defer();
+
+				dfd.resolve(scope.request());
+
+				return dfd.promise;
+			}
+
+			elem.on('click', function() {
+				elem.hide();
+				setTimeout(function() {
+				spinnerIcon.show();
+				invokeRequest().then(function*( {
+					elem.show();
+					spinnerIcon.hide();
+					}), 3000;
+				}))
+			})
+		}
+
+*/
